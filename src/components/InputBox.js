@@ -29,6 +29,7 @@ class InputBox extends React.Component {
 
 	render() {
 		return (
+			<>
 			<input
 				placeholder="Add New"
 				className="form-control add-todo"
@@ -36,6 +37,8 @@ class InputBox extends React.Component {
 				onChange={this.handleChange}
 				onKeyUp={this.handleKeyUp}
 				value={this.value} />
+
+			</>
 		);
 	}
 }

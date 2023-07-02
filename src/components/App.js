@@ -7,11 +7,15 @@ import '../style/index.css';
 import Items from '../data/items.json';
 
 import TodoList from './TodoList';
+import { createNew } from '../services/todo';
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { items: Items };
+    this.state = {
+      filter: 'active',
+      items: Items
+    };
   }
 
   render() {
@@ -19,20 +23,23 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <TodoList title={title} items={this.state.items} addNew={this.addNew.bind(this)} />
+          <TodoList title={title} addNew={this.addNew} onFilterChange={this.handleFilterChange} {...this.state} />
         </div>
       </div>
     );
   }
 
-  addNew(text) {
-    let newItem = { text: text }
+  addNew = (text) => {
+    const newList = this.state.items.concat(createNew(text))
+    this.setState({ items: newList })
+  }
 
-    let newList = this.state.items.concat(newItem);
+  handleFilterChange = (state) => {
     this.setState({
-      items: newList
+      filter: state
     });
   }
+
 }
 
 export default App;

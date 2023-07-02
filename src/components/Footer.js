@@ -1,11 +1,18 @@
-function Footer({ count }) {
+import Filter from "./Filter";
+
+function Footer({ count, filter, onFilterChange }) {
 
 	return (
-		<div className="todo-footer">
+		<div className="todo-footer clearfix">
+			<div className="pull-left">
 			<strong>
 				<span className="count-todos">{count}</span>
 			</strong>
 			{' items left'}
+			</div>
+			<div className="pull-right">
+				<Filter filter={filter} onFilterChange={onFilterChange} />
+			</div>
 		</div>
 	);
 }
