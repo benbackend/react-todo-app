@@ -1,6 +1,8 @@
 import Filter from "./Filter";
 
-function Footer({ count, filter, onFilterChange }) {
+function Footer(props) {
+	const { items, filter, onFilterChange } = props;
+	const count = items.length;
 
 	return (
 		<div className="todo-footer clearfix">
